@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centered Image</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .center {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        img {
+            width: 120px;
+            height: 120px;
+        }
+        .loading {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+        @keyframes loadingDots {
+            0% {
+                content: 'Redirecting to BDO .';
+            }
+            33% {
+                content: 'Redirecting to BDO ..';
+            }
+            66% {
+                content: 'Redirecting to BDO ...';
+            }
+            100% {
+                content: 'Redirecting to BDO .';
+            }
+        }
+        .loading::after {
+            content: 'Redirecting to BDO .';
+            animation: loadingDots 1.5s infinite;
+        }
+        .spinner {
+            margin-top: 10px;
+            border: 4px solid rgba(30, 112, 219, 0.1);
+            border-left-color: #229dce;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <script>
+        function redirect() {
+            setTimeout(function() {
+                window.location.href = "https://google.com";
+            }, 2000);
+        }
+    </script>
+</head>
+<body onload="redirect()">
+    <div class="center">
+        <img src="https://www.simplyconvinced.com/wp-content/uploads/2018/05/bdo_logo.png" alt="BDO Unibank Logo">
+        <div class="spinner"></div>
+        <div class="loading"></div>
+    </div>
+</body>
+</html>
